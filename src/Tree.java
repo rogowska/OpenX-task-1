@@ -1,57 +1,54 @@
-import org.w3c.dom.Node;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
 public class Tree {
 
-    private ArrayList<Integer> tree;
+   private Node root;
     private int size;
 
-
-    public Tree(int value, int capacity){
-        tree = new ArrayList<Integer>(capacity);
-        this.tree.add(0, value);
-        this.size = 1;
+    public Tree(int value){
+       root = new Node(value);
+       size = 1;
     }
 
-    public void insert(int value, int parentIndex){
-        insert(value);
-        int currentIndex = size - 1;
-        int secondIndex;
-        while ((findParentIndex(currentIndex) != parentIndex) && currentIndex != 0){
-            secondIndex = currentIndex;
-            currentIndex = findParentIndex(currentIndex);
-            Collections.swap(this.tree, currentIndex, secondIndex);
-        }
-
+    private void print(Node node){
+        System.out.println(node.value);
+        if(node.left != null){
+        print(node.left);}
+        if (node.right != null){
+        print(node.right);}
     }
 
-     public void insert(int value){
-        this.tree.add(size, value);
-        this.size++;
+    public void print(){
+        print(root);
+    }
 
-     }
 
-     public void print(){
-        for(Integer x: this.tree){
-            System.out.println(x);
+    //insert returns if succeeded
+    private boolean insert(Node node, int value, int parentValue){
+        if(node.value == parentValue){
+            if(node.left == null){
+                Node nodeNew = new Node(value);
+                node.left = nodeNew;
+                return true;
+            }
+            else if(node.right == null){
+                Node nodeNew = new Node(value);
+                node.right = nodeNew;
+                return true;
+            }
+
+            }
+        if(node.left != null){
+            insert(node.left, value, parentValue);
         }
-     }
+        if (node.right != null){
+            insert(node.right, value, parentValue);
+        }
 
-     private int findParentIndex(int i){
-         return (i - 1) / 2;
-     }
+        return false;
+    }
 
-     private int findLeftChildIndex(int i){
-        return 0;
-     }
-
-     private int findRightChildIndex(int i){
-        return 0;
-     }
-
+   public boolean insert(int value, int parentValue){
+        return insert(root, value, parentValue);
+   }
 
 
 }

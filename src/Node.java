@@ -1,19 +1,11 @@
 public class Node {
     int value;
-    Node parent;
+    Node left;
+    Node right;
 
-
-    public Node(int value){
+    public Node(int value) {
         this.value = value;
-        this.parent = null;
+        left = null;
+        right = null;
     }
-
-    public Node(int value, Node parent){
-        this.value = value;
-        this.parent = parent;
-
-    }
-
 }
-
-
