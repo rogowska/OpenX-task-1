@@ -8,12 +8,13 @@ public class Tree {
        size = 1;
     }
 
+    //print preorder
     private void print(Node node){
         System.out.println(node.value);
-        if(node.left != null){
-        print(node.left);}
-        if (node.right != null){
-        print(node.right);}
+        if(node.left != null)
+            print(node.left);
+        if (node.right != null)
+            print(node.right);
     }
 
     public void print(){
@@ -36,12 +37,10 @@ public class Tree {
             }
 
             }
-        if(node.left != null){
+        if(node.left != null)
             insert(node.left, value, parentValue);
-        }
-        if (node.right != null){
+        if (node.right != null)
             insert(node.right, value, parentValue);
-        }
 
         return false;
     }
