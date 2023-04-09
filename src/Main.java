@@ -7,5 +7,6 @@ public class Main {
         tree.insert(2, 6);
         tree.insert(9, 5);
         tree.print();
+        System.out.println(tree.howDeep());
     }
 }
