@@ -66,8 +66,7 @@ public class Tree {
    private int howDeep(Node node){
         if(node == null)
             return 0;
-        else
-            return howDeep(node.left) + howDeep(node.right) + 1;
+        return Math.max(howDeep(node.left),howDeep(node.right)) + 1;
    }
 
     public int howDeep(){
