@@ -14,6 +14,6 @@ public class Main {
         tree2.insert(1, 5);
         tree2.insert(3, 6);
         tree2.insert(9, 5);
-        System.out.println(tree.ifEqual(tree2));
+        Test.test(tree, tree2);
     }
 }

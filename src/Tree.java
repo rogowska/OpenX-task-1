@@ -10,7 +10,7 @@ public class Tree {
 
     //print preorder
     private void print(Node node){
-        System.out.println(node.value);
+        System.out.print(node.value + " ");
         if(node.left != null)
             print(node.left);
         if (node.right != null)
@@ -19,6 +19,7 @@ public class Tree {
 
     public void print(){
         print(root);
+        System.out.println();
     }
 
 
