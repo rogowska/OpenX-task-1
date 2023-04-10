@@ -94,11 +94,10 @@ public class Tree {
    }
 
     public boolean ifEqual(Tree secondTree){
-        boolean result = false;
+        boolean equal = false;
         if(this.size == secondTree.size)
-            result = ifEqual(root, secondTree.root);
-        return result;
-
+            equal = ifEqual(root, secondTree.root);
+        return equal;
     }
 
 }
