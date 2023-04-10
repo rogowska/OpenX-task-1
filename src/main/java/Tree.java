@@ -9,17 +9,18 @@ public class Tree {
     }
 
     //print preorder
-    private void print(Node node){
-        System.out.print(node.value + " ");
+    private String print(Node node, String preOrder){
+        preOrder = preOrder + node.value + " ";
         if(node.left != null)
-            print(node.left);
+            preOrder = print(node.left, preOrder);
         if (node.right != null)
-            print(node.right);
+            preOrder = print(node.right, preOrder);
+        return preOrder;
     }
 
-    public void print(){
-        print(root);
-        System.out.println();
+    public String print(){
+        String preOrder = print(root, "");
+        return preOrder;
     }
 
 
@@ -29,18 +30,20 @@ public class Tree {
             if(node.left == null){
                 Node nodeNew = new Node(value);
                 node.left = nodeNew;
+                size++;
                 return true;
             }
             else if(node.right == null){
                 Node nodeNew = new Node(value);
                 node.right = nodeNew;
+                size++;
                 return true;
             }
 
             }
-        if(node.left != null)
+        else if(node.left != null)
             insert(node.left, value, parentValue);
-        if (node.right != null)
+        else if(node.right != null)
             insert(node.right, value, parentValue);
 
         return false;
