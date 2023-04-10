@@ -8,51 +8,57 @@ public class Tree {
        size = 1;
     }
 
-    //print preorder
-    private String print(Node node, String preOrder){
+    private String getPreorder(Node node, String preOrder){
         preOrder = preOrder + node.value + " ";
         if(node.left != null)
-            preOrder = print(node.left, preOrder);
+            preOrder = getPreorder(node.left, preOrder);
         if (node.right != null)
-            preOrder = print(node.right, preOrder);
+            preOrder = getPreorder(node.right, preOrder);
         return preOrder;
     }
 
-    public String print(){
-        String preOrder = print(root, "");
-        return preOrder;
+    public String getPreorder(){
+        return getPreorder(root, "");
     }
 
+    private Node findParent(Node node, int parentValue){
+        Node parent = null;
 
-    //insert returns if succeeded
-    private boolean insert(Node node, int value, int parentValue){
-        if(node.value == parentValue){
-            if(node.left == null){
-                Node nodeNew = new Node(value);
-                node.left = nodeNew;
-                size++;
-                return true;
-            }
-            else if(node.right == null){
-                Node nodeNew = new Node(value);
-                node.right = nodeNew;
-                size++;
-                return true;
-            }
-
-            }
+        if(node.value == parentValue)
+            parent = node;
         else if(node.left != null)
-            insert(node.left, value, parentValue);
+            parent = findParent(node.left, parentValue);
         else if(node.right != null)
-            insert(node.right, value, parentValue);
+            parent = findParent(node.right, parentValue);
 
-        return false;
+        return parent;
+    }
+
+    private boolean insert(Node node, int value){
+        boolean inserted = false;
+
+        if(node.left == null){
+            node.left = new Node(value);
+            size++;
+            inserted = true;
+        }
+        else if(node.right == null){
+            node.right = new Node(value);
+            size++;
+            inserted = true;
+        }
+        return inserted;
     }
 
    public boolean insert(int value, int parentValue){
-        return insert(root, value, parentValue);
+        boolean inserted = false;
+        Node parent = findParent(root, parentValue);
+        if(parent != null){
+            inserted = insert(parent, value);
+        }
+        return inserted;
    }
-
+    //todo:refactor below
    private int leafCount(Node node){
         if(node == null)
             return 0;

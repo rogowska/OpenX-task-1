@@ -18,8 +18,8 @@ public class InsertSpec {
     public void b(){
         Tree tree = CreateTree.createTree("test/resources/InsertTests.txt");
         boolean inserted = tree.insert(1, 6);
-        //assertTrue(inserted);
-        assertEquals("7 6 1 6 ", tree.print());
+        assertTrue(inserted);
+        assertEquals("7 6 1 6 ", tree.getPreorder());
     }
 
     //no parent
