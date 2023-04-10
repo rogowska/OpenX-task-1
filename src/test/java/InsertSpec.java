@@ -5,36 +5,53 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InsertSpec {
 
-    //only root
+    public static final String TREE_DATA = "test/resources/InsertTests.txt";
+
+
     @Test
-    public void a(){
+    public void shouldInsertNodeToRoot(){
         Tree tree = new Tree(1);
         boolean inserted = tree.insert(4,1);
+
         assertTrue(inserted);
+        assertEquals("1 4 ", tree.getPreorder());
     }
 
-    //two same parents
     @Test
-    public void b(){
-        Tree tree = CreateTree.createTree("test/resources/InsertTests.txt");
+    public void shouldInsertNodeToFirstFoundParent(){
+        Tree tree = TreeCreator.createTree(TREE_DATA);
         boolean inserted = tree.insert(1, 6);
+
         assertTrue(inserted);
         assertEquals("7 6 1 6 ", tree.getPreorder());
     }
 
-    //no parent
     @Test
-    public void c(){
-        Tree tree = CreateTree.createTree("test/resources/InsertTests.txt");
-        boolean inserted = tree.insert(1, 8);
-        assertFalse(inserted);
+    public void shouldInsertNodeToFirstFreeParent(){
+        Tree tree = TreeCreator.createTree(TREE_DATA);
+        tree.insert(7, 6);
+
+        boolean inserted = tree.insert(1, 7);
+        assertTrue(inserted);
+        assertEquals("7 6 7 1 6 ", tree.getPreorder());
     }
 
-    //parent with no null children
+
     @Test
-    public void d(){
-        Tree tree = CreateTree.createTree("test/resources/InsertTests.txt");
-        boolean inserted = tree.insert(1, 7);
+    public void shouldNotInsertNodeIfNoParentFound(){
+        Tree tree = TreeCreator.createTree(TREE_DATA);
+        boolean inserted = tree.insert(1, 8);
+
         assertFalse(inserted);
+        assertEquals("7 6 6 ", tree.getPreorder());
+    }
+
+    @Test
+    public void shouldNotInsertNodeIfNoFreeParentFound(){
+        Tree tree = TreeCreator.createTree(TREE_DATA);
+        boolean inserted = tree.insert(1, 7);
+
+        assertFalse(inserted);
+        assertEquals("7 6 6 ", tree.getPreorder());
     }
 }

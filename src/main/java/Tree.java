@@ -24,7 +24,7 @@ public class Tree {
     private Node findParent(Node node, int parentValue){
         Node parent = null;
 
-        if(node.value == parentValue)
+        if(node.value == parentValue && (node.left == null || node.right == null))
             parent = node;
         else if(node.left != null)
             parent = findParent(node.left, parentValue);
