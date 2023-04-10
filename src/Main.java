@@ -1,3 +1,6 @@
+import javax.xml.crypto.Data;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Tree tree = new Tree(7);
@@ -14,6 +17,7 @@ public class Main {
         tree2.insert(1, 5);
         tree2.insert(3, 6);
         tree2.insert(9, 5);
-        Test.test(tree, tree2);
+        Tree tree3 = Test.createTree("dane.txt", 5);
+        Test.test(tree, tree3);
     }
 }
