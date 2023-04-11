@@ -6,37 +6,37 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class IfEqualSpec {
 
     @Test
-    public void shouldBeEqualIfTreesAreEqual(){
+    public void shouldTheSameTreesBeEqual() {
         Tree tree = TreeCreator.createTree("test/resources/EqualTest1.txt");
         Tree tree2 = TreeCreator.createTree("test/resources/EqualTest1.txt");
 
-        boolean equal = tree.equals(tree2);
+        boolean equal = tree.ifEqual(tree2);
         assertTrue(equal);
     }
     @Test
-    public void shouldNotBeEqualIfTreesHaveDifferentSizes(){
+    public void shouldTreesOfDifferentSizesNotBeEqual(){
         Tree tree = TreeCreator.createTree("test/resources/EqualTest1.txt");
         Tree tree2 = TreeCreator.createTree("test/resources/EqualTest2.txt");
 
-        boolean equal = tree.equals(tree2);
+        boolean equal = tree.ifEqual(tree2);
         assertFalse(equal);
     }
 
     @Test
-    public void shouldNotBeEqualIfTreesHaveNotEqualNodes(){
+    public void shouldTreesWithDifferentNodesNotBeEqual(){
         Tree tree = TreeCreator.createTree("test/resources/EqualTest1.txt");
         Tree tree2 = TreeCreator.createTree("test/resources/EqualTest3.txt");
 
-        boolean equal = tree.equals(tree2);
+        boolean equal = tree.ifEqual(tree2);
         assertFalse(equal);
     }
 
     @Test
-    public void shouldNotBeEqualIfTreesAreBuildDifferently(){
+    public void shouldTreesWithTheSameValueNodesInDifferentOrderNotBeEqual(){
         Tree tree = TreeCreator.createTree("test/resources/EqualTest4.txt");
         Tree tree2 = TreeCreator.createTree("test/resources/EqualTest5.txt");
 
-        boolean equal = tree.equals(tree2);
+        boolean equal = tree.ifEqual(tree2);
         assertFalse(equal);
     }
 }
