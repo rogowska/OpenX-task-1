@@ -73,30 +73,30 @@ public class Tree {
    }
 
 
-   private int howDeep(Node node){
+   private int getMaxPathLenght(Node node){
         if(node == null)
             return 0;
-        return Math.max(howDeep(node.left),howDeep(node.right)) + 1;
+        return Math.max(getMaxPathLenght(node.left), getMaxPathLenght(node.right)) + 1;
    }
 
-    public int howDeep(){
-        return howDeep(root);
+    public int getMaxPathLenght(){
+        return getMaxPathLenght(root) - 1;
     }
 
 
-   private boolean ifEqual(Node node, Node node2){
+   private boolean isEqual(Node node, Node node2){
+        boolean equal = false;
         if(node == null && node2 == null)
-            return true;
-        if(node.value == node2.value)
-        return ifEqual(node.left, node2.left) & ifEqual(node.right, node2.right);
-        else return false;
-
+            equal = true;
+        else if(node.value == node2.value)
+            equal = isEqual(node.left, node2.left) & isEqual(node.right, node2.right);
+        return equal;
    }
 
-    public boolean ifEqual(Tree secondTree){
+    public boolean isEqual(Tree secondTree){
         boolean equal = false;
         if(this.size == secondTree.size)
-            equal = ifEqual(root, secondTree.root);
+            equal = isEqual(root, secondTree.root);
         return equal;
     }
 
