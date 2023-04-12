@@ -1,7 +1,7 @@
 # OpenX-task-1
 
 Metoda insert wstawia węzeł jako dziecko rodzica o wskazanej wartości, o ile rodzic:
-- istnieje (istnieje węzeł o wskazanej wartości),
+- istnieje,
 - posiada przynajmniej jedno wolne miejsce.
 W przypadku większej ilości rodziców spełniającej powyższe warunki
 wybierany jest ten rodzic, który znaleziony jest jako pierwszy.
