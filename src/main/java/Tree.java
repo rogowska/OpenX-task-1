@@ -61,7 +61,7 @@ public class Tree {
 
    private int leafCount(Node node){
         if(node == null)
-            return 0;
+           return 0;
         if(node.right == null && node.left == null)
            return 1;
         else
@@ -74,9 +74,10 @@ public class Tree {
 
 
    private int getMaxPathLenght(Node node){
-        if(node == null)
-            return 0;
-        return Math.max(getMaxPathLenght(node.left), getMaxPathLenght(node.right)) + 1;
+        int edges = 0;
+        if( node != null)
+            edges = Math.max(getMaxPathLenght(node.left), getMaxPathLenght(node.right)) + 1;
+        return edges;
    }
 
     public int getMaxPathLenght(){
