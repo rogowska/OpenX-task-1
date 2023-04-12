@@ -1,16 +1,14 @@
 # OpenX-task-1
 
-Metoda insert wstawia węzeł jako dziecko rodzica o wskazanej wartości, o ile rodzic:
-- istnieje,
-- posiada przynajmniej jedno wolne miejsce.
+Insert method inserts node as a child of a parent with specific value, if parent:
+- exists,
+- has at least one free child node.
 
-W przypadku większej ilości rodziców spełniającej powyższe warunki
-wybierany jest ten rodzic, który znaleziony jest jako pierwszy.
+If more than one parent fulfill conditions above, method ends after finding the first one.
 
+Test files structure:
 
-Struktura pliku testowego:
-
-- pierwsza linika - ilość node w drzewie,
-- druga linijka - wartość w root,
-- kolejne linijki to pary value, parent value (w osobnych liniach).
+- first line - number of nodes in the tree,
+- second line - root value,
+- pairs value, parent value (each in new line).
 
