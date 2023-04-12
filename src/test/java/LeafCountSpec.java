@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class LeafCountSpec {
 
     @Test
-    public void shouldReturnTrueForTheRoot() {
+    public void shouldCountLeavesForTreeWithRootOnly() {
         Tree tree = new Tree(1);
 
         int leafs = tree.leafCount();
@@ -13,7 +13,7 @@ public class LeafCountSpec {
     }
 
     @Test
-    public void shouldReturnTrueFor1Leaf() {
+    public void shouldCountLeavesForTreeWithOnlyOneChild() {
         Tree tree = TreeCreator.createTree("test/resources/LeafTest.txt");
 
         int leafs = tree.leafCount();
@@ -21,7 +21,7 @@ public class LeafCountSpec {
     }
 
     @Test
-    public void shouldReturnTrueFor4Leafs() {
+    public void shouldCountLeavesForTree() {
         Tree tree = TreeCreator.createTree("test/resources/LeafTest2.txt");
 
         int leafs = tree.leafCount();
@@ -29,7 +29,7 @@ public class LeafCountSpec {
     }
 
     @Test
-    public void shouldReturnTrueForTwoSingleSubtrees() {
+    public void shouldCountLeavesForTwoSingleSubtrees() {
         Tree tree = TreeCreator.createTree("test/resources/LeafTest3.txt");
 
         int leafs = tree.leafCount();

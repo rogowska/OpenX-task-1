@@ -26,9 +26,9 @@ public class Tree {
 
         if(node.value == parentValue && (node.left == null || node.right == null))
             parent = node;
-        else if(node.left != null)
+        if(parent == null && node.left != null)
             parent = findParent(node.left, parentValue);
-        else if(node.right != null)
+        if(parent == null && node.right != null)
             parent = findParent(node.right, parentValue);
 
         return parent;
@@ -58,7 +58,7 @@ public class Tree {
         }
         return inserted;
    }
-    //todo:refactor below
+
    private int leafCount(Node node){
         if(node == null)
             return 0;

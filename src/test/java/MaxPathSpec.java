@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MaxPathSpec {
 
     @Test
-    public void shouldReturnTrueForTheRoot() {
+    public void shouldTreeWithRootOnlyHaveNoPaths() {
         Tree tree = new Tree(1);
 
         int edges = tree.getMaxPathLenght();
@@ -15,7 +15,7 @@ public class MaxPathSpec {
     }
 
     @Test
-    public void shouldReturnTrueForNotEqualSubtrees() {
+    public void shouldCountEdgesForTreeWithSubtressOfDifferentStructure() {
         Tree tree = TreeCreator.createTree("test/resources/MaxPathTest.txt");
 
         int edges = tree.getMaxPathLenght();
@@ -23,7 +23,7 @@ public class MaxPathSpec {
     }
 
     @Test
-    public void shouldReturnTrueForEqualSubtrees() {
+    public void shouldCountEdgesForTreeWithSubtreesOfTheSameStructure() {
         Tree tree = TreeCreator.createTree("test/resources/MaxPathTest2.txt");
 
         int edges = tree.getMaxPathLenght();
@@ -31,7 +31,7 @@ public class MaxPathSpec {
     }
 
     @Test
-    public void shouldReturnTrueForOneSubtree() {
+    public void shouldCountEdgesForTreeWithOneSubtree() {
         Tree tree = TreeCreator.createTree("test/resources/MaxPathTest3.txt");
 
         int edges = tree.getMaxPathLenght();
